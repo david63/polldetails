@@ -1,0 +1,27 @@
+{
+	"name": "david63/polldetails",
+	"type": "phpbb-extension",
+	"description": "Adds an ACP lisitng of the details of who has voted in a poll.",
+	"version": "2.1.0",
+	"time": "2017-01-07",
+	"license": "GPL-2.0-only",
+	"authors": [{
+			"name": "David Wood",
+			"role": "Developer"
+		}],
+	"require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+	"extra": {
+		"display-name": "[*] Poll Details",
+		"soft-require": {
+	         "phpbb/phpbb": ">=3.2.0"
+    	},
+		"version-check": {
+        	"host": "version.phpbbdev.space",
+        	"directory": "/3.2",
+        	"filename": "/poll_details_version_file.json"
+    	}
+	}
+}

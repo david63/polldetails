@@ -1,0 +1,69 @@
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
+
+<form id="poll_details" method="post" action="{{ U_ACTION }}">
+
+	<div class="head-panel">
+		<p>{{ lang('SELECT_VOTES') }}</p>
+		<p>{{ lang('VISIT_TOPIC') }}</p>
+
+		<div class="pagination">
+			{% if pagination or TOTAL_POLLS %}
+				{{ TOTAL_POLLS }}
+				{% if pagination %}
+					&bull; {% include 'pagination.html' %}
+				{% else %}
+					&bull; {{ PAGE_NUMBER }}
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="table">
+		<div class="table-header">
+			<div class="table-header-cell-left">{{ lang('FORUM') }}</div>
+			<div class="table-header-cell">{{ lang('TOPIC_TITLE') }}</div>
+			<div class="table-header-cell">{{ lang('TOPIC_STARTER') }}</div>
+			<div class="table-header-cell-right">{{ lang('TOPIC_STARTED') }}</div>
+		</div>
+
+		<div class="table-body">
+			{% for polls in poll_details %}
+				{% if polls.S_ROW_COUNT is even %}<div class="table-row2">{% else %}<div class="table-row1">{% endif %}
+					<div class="table-body-cell pointer showkey" key="{{ polls.POLL_KEY }}">{{ polls.FORUM }}</div>
+					<div class="table-body-cell"><a href="{{ polls.TOPIC_URL }}">{{ polls.TOPIC }}</a></div>
+					<div class="table-body-cell">{{ polls.TOPIC_STARTER }}</div>
+					<div class="table-body-cell">{{ polls.TOPIC_TIME }}</div>
+				</div>
+
+				<div class="table-row-span" id="{{ polls.POLL_KEY }}">
+					<div class="table-header">
+						<div class="table-header-cell">{{ lang('POLL_VOTES') }}</div>
+						<div class="table-header-cell">{{ lang('POLL_OPTION') }}</div>
+						<div class="table-header-cell">{{ lang('POLL_VOTER') }}</div>
+					</div>
+					{% for votes in polls.vote_details %}
+						{% if votes.S_ROW_COUNT is even %}<div class="table-row1">{% else %}<div class="table-row2">{% endif %}
+							<div class="table-body-cell">{{ votes.POLL_TOTAL }}</div>
+							<div class="table-body-cell">{{ votes.POLL_TEXT }}</div>
+							<div class="table-body-cell">{{ votes.USERS }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<br>
+
+	<div class="pagination">
+		{% if pagination %}
+			{% include 'pagination.html' %}
+		{% else %}
+			{{ PAGE_NUMBER }}
+		{% endif %}
+	</div>
+
+</form>
+
+{% INCLUDEJS '@david63_polldetails/show_hide.js' %}
+{% include '@' ~ NAMESPACE ~ '/donate.html' %}

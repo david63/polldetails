@@ -1,0 +1,23 @@
+imports:
+    - { resource: phpbb_tables.yml }
+
+services:
+    david63.polldetails.admin.controller:
+        class: david63\polldetails\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@user'
+            - '@request'
+            - '@template'
+            - '@pagination'
+            - '@language'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@david63.polldetails.core.functions'
+            - '%tables%'
+
+    david63.polldetails.core.functions:
+        class: david63\polldetails\core\functions
+        arguments:
+            - '@ext.manager'
