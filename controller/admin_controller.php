@@ -112,7 +112,7 @@ class admin_controller implements admin_interface
 		$back = false;
 
 		// Get a list of the polls
-	   	$sql = $this->db->sql_build_query('SELECT', array(
+		$sql = $this->db->sql_build_query('SELECT', array(
 			'SELECT'	=> 'f.forum_name, f.forum_id, o.topic_id, o.poll_option_id, t.topic_time, t.topic_title, t.topic_poster',
 			'FROM'		=> array(
 				POLL_OPTIONS_TABLE	=> 'o',
@@ -184,7 +184,7 @@ class admin_controller implements admin_interface
 					),
 
 					'LEFT_JOIN'	=> array(
-			   			array(
+						array(
 							'FROM'	=> array(POLL_VOTES_TABLE	=> 'v'),
 							'ON'	=> 'v.vote_user_id = u.user_id',
 						)

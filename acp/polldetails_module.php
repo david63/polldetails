@@ -29,5 +29,3 @@ class polldetails_module
 		$admin_controller->display_output();
 	}
 }
-
-?>

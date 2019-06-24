@@ -40,5 +40,3 @@ $lang = array_merge($lang, array(
 	'ACP_POLL_DETAILS'	=> 'Poll details',
 	'ACP_USER_UTILS'	=> 'User utilities',
 ));
-
-?>
