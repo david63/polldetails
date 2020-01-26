@@ -100,8 +100,9 @@ class admin_controller implements admin_interface
 	*/
 	public function display_output()
 	{
-		// Add the language file
+		// Add the language files
 		$this->language->add_lang('acp_polldetails',  $this->functions->get_ext_namespace());
+		$this->language->add_lang('acp_common',  $this->functions->get_ext_namespace());
 
 		// Start initial var setup
 		$action			= $this->request->variable('action', '');
@@ -238,16 +239,20 @@ class admin_controller implements admin_interface
 		$this->pagination->generate_template_pagination($action, 'pagination', 'start', $poll_count, $this->config['topics_per_page'], $start);
 
 		// Template vars for header panel
+		$version_data	= $this->functions->version_check();
+
 		$this->template->assign_vars(array(
+			'DOWNLOAD'			=> (array_key_exists('download', $version_data)) ? '<a class="download" href =' . $version_data['download'] . '>' . $this->language->lang('NEW_VERSION_LINK') . '</a>' : '',
+
 			'HEAD_TITLE'		=> $this->language->lang('ACP_POLL_DETAILS'),
 			'HEAD_DESCRIPTION'	=> $this->language->lang('ACP_POLL_DETAILS_EXPLAIN'),
 
 			'NAMESPACE'			=> $this->functions->get_ext_namespace('twig'),
 
 			'S_BACK'			=> $back,
-			'S_VERSION_CHECK'	=> $this->functions->version_check(),
+			'S_VERSION_CHECK'	=> (array_key_exists('current', $version_data)) ? $version_data['current'] : false,
 
-			'VERSION_NUMBER'	=> $this->functions->get_this_version(),
+			'VERSION_NUMBER'	=> $this->functions->get_meta('version'),
 		));
 
 		$this->template->assign_vars(array(

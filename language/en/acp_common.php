@@ -36,19 +36,19 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
+
 $lang = array_merge($lang, array(
-	'ACP_POLL_DETAILS_EXPLAIN'	=> 'This shows you the details of who has voted, and for which option, in a poll.',
+	'DONATE'					=> 'Donate',
+	'DONATE_EXTENSIONS'			=> 'Donate to my extensions',
+	'DONATE_EXTENSIONS_EXPLAIN'	=> 'This extension, as with all of my extensions, is totally free of charge. If you have benefited from using it then please consider making a donation by clicking the PayPal donation button opposite - I would appreciate it. I promise that there will be no spam nor requests for further donations, although they would always be welcome.',
 
-	'NO_POLL_DATA'				=> 'There is no poll data to display',
+	'NEW_VERSION'				=> 'New Version - %s',
+	'NEW_VERSION_EXPLAIN'		=> 'Version %1$s of this extension is now available for download.<br>%2$s',
+	'NEW_VERSION_LINK'			=> 'Download here',
+	'NO_VERSION_EXPLAIN'		=> 'Version update information is not available.',
 
-	'POLL_OPTION'				=> 'Poll option',
-	'POLL_VOTER'				=> 'Voted for by',
-	'POLL_VOTES'				=> 'Option votes',
+	'PAYPAL_BUTTON'				=> 'Donate with PayPal button',
+	'PAYPAL_TITLE'				=> 'PayPal - The safer, easier way to pay online!',
 
-	'SELECT_VOTES'				=> 'Click on the forum to expand/collapse the data and view the votes',
-
-	'TOPIC_STARTED'				=> 'Poll created on',
-	'TOPIC_STARTER'				=> 'Poll started by',
-
-	'VISIT_TOPIC'				=> 'Click on the topic title to visit the topic',
+	'VERSION'					=> 'Version',
 ));
