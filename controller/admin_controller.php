@@ -144,7 +144,7 @@ class admin_controller implements admin_interface
 					USERS_TABLE	=> 'u',
 				),
 
-				'WHERE' => 'u.user_id = ' . $row['topic_poster'],
+				'WHERE' => 'u.user_id = ' . (int) $row['topic_poster'],
 			));
 
 			$result1	= $this->db->sql_query($sql1);
@@ -169,7 +169,7 @@ class admin_controller implements admin_interface
 					POLL_OPTIONS_TABLE	=> 'o',
 				),
 
-				'WHERE'		=> 'o.topic_id = ' . $row['topic_id'],
+				'WHERE'		=> 'o.topic_id = ' . (int) $row['topic_id'],
 				'ORDER_BY'	=> 'o.poll_option_id',
 			));
 
@@ -191,7 +191,7 @@ class admin_controller implements admin_interface
 						)
 					),
 
-					'WHERE'		=> 'v.poll_option_id = ' . $row1['poll_option_id'] . '
+					'WHERE'		=> 'v.poll_option_id = ' . (int) $row1['poll_option_id'] . '
 						AND v.topic_id = ' . $row1['topic_id'],
 					'ORDER_BY'	=> 'u.username_clean',
 				));
